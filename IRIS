@@ -1,0 +1,71 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+data=pd.read_csv("d:/csv files/iris.csv")
+
+
+data.shape
+
+data.head(5)
+
+data.isnull().sum()
+
+import seaborn as sns 
+
+#data preprocessing
+
+sns.boxplot(data['SepalLengthCm'])
+
+sns.boxplot(data['SepalWidthCm'])
+
+q1=data['SepalWidthCm'].quantile(0.25)
+
+q3=data['SepalWidthCm'].quantile(0.75)
+
+iqr=q3-q1
+
+upper_limit=iqr*1.5+q3
+lower_limit=q1-1.5*iqr
+
+def Imputation(value):
+    if value > upper_limit:
+        return upper_limit
+    elif value < lower_limit:
+        return lower_limit
+    else:
+        return value
+
+data['SepalWidthCm']=data['SepalWidthCm'].apply(Imputation)
+
+sns.boxplot(data['SepalWidthCm'])
+
+sns.boxplot(data['PetalLengthCm'])
+
+sns.boxplot(data['PetalWidthCm'])
+
+data['PetalLengthCm'].unique()
+
+data['PetalWidthCm'].unique()
+
+data['SepalLengthCm'].unique()
+
+data['SepalWidthCm'].unique()
+
+data.shape
+
+from sklearn.tree import DecisionTreeClassifier
+
+tree=DecisionTreeClassifier()
+
+from sklearn.model_selection import train_test_split
+
+x=data.iloc[:,0:4]
+
+x.head(5)
+
+
+
+
+
