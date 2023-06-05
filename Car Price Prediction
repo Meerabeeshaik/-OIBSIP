@@ -1,0 +1,57 @@
+import numpy as np 
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data=pd.read_csv("D:/csv files/CarPrice.csv")
+
+data.head()
+
+data['enginelocation'].unique()
+
+data['fuelsystem'].unique()
+
+data['drivewheel'].unique()
+
+data['drivewheel']=data['drivewheel'].replace("4wd","fwd")
+
+data['drivewheel'].unique()
+
+data['fueltype'].unique()
+
+data['aspiration'].unique()
+
+data['carbody'].unique()
+
+data['doornumber'].unique()
+
+data.corr()
+
+data['car_ID']
+
+data=data.iloc[:,1:]
+
+data
+
+
+correlation=data.corr()
+
+correlation['price']
+
+data=data.drop(['symboling','peakrpm','compressionratio','carheight','stroke'],axis=1)
+
+data.info()
+
+correlation=data.corr()
+
+correlation['price']
+
+data['wheelbase'].unique()
+
+data['enginesize'].unique()
+
+data.info()
+
+data["CarName"].unique().size
+
+data['CarName'].unique()
+
